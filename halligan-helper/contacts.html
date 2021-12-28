@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Halligan Helper</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale-1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        .column1 {
+            float: left;
+            width: 40%;
+            margin-left: 100px;
+        }
+        
+        .column2 {
+            margin-top: 30px;
+            padding-left: 1em;
+            padding-top: 0;
+        }
+    </style>
+    <script lang="javascript">
+      // Allow = #method;
+      
+      // verifies first name
+      function verifyFName()
+      {
+          with (document.data) {
+              var regex = /^[a-zA-Z]+$/;
+              if (!regex.test(fname.value)) {
+                  alert("First name is invalid. Please enter your first name");
+                  fname.focus();
+                  return false;
+              }
+              return true;
+          }
+      }
+      
+      // verifies last name
+      function verifyLName()
+      {
+          with (document.data) {
+              var regex = /^[a-zA-Z]+$/;
+              if (!regex.test(lname.value)) {
+                  alert("Last name is invalid. Please enter your last name");
+                  lname.focus();
+                  return false;
+              }
+              return true;
+          }
+      }
+      
+      // verifies number
+      function verifyNumber()
+      {
+          with (document.data) {
+              var regex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+              if (!regex.test(number.value)) {
+                  alert("Number is invalid. Please use the form XXX-XXX-XXXX");
+                  number.focus();
+                  return false;
+              }
+              return true;
+          }
+      }
+      
+      // verifies email
+      function verifyEmail()
+      {
+          with (document.data) {
+              var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+              if (!regex.test(email.value)) {
+                  alert("Email is invalid. Please enter your email");
+                  email.focus();
+                  return false;
+              }
+              return true;
+          }
+      }
+      
+      function validate() {
+        valid = true;
+        if(!verifyFName()) {
+          valid = false;
+        }
+        if(!verifyLName()) {
+          valid = false;
+        }
+        if(!verifyNumber()) {
+          valid = false;
+        }
+        if(!verifyEmail()) {
+          valid = false;
+        }
+        if (valid) {
+          alert("Thank you for joining our E-List!");
+        }
+        return valid;
+      }
+
+    </script>
+
+  </head>
+  <body>
+
+        <div class="nav-bar">
+            <div class="nav-left">
+                <a href="index.html">
+                  <div class="logo">
+                    <img src="logo.jpg" alt="logo" style="height: 5%;"></img>
+                  </div>
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html">Home</a>
+                <a href="about-us.html">About Us</a>
+                <a href="products.php">Products</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="contacts.html">Contact</a>
+            </div>
+        </div>
+        <h1>Contact Us</h1>
+<p> 
+  Phone: 100-001-0110
+  <br>
+  Email: halliganhelper.contact@gmail.com 
+  <br>
+  Instagram: halliganhelper
+  <br>
+  Mailing Address: 161 College Avenue, Medford, Massachusetts 02155
+</p>
+
+<?php
+      $server = "sql304.epizy.com";
+      $userid = "epiz_29722285";
+      $pw = "ny8b6tbqsUQT7ML";
+      $db= "epiz_29722285_halliganhelper";
+      
+      $to = document.getElementsByTagName("email");
+      $sub = "Welcome to Halligan Helper's E-List!";
+      $msg = "Thank you for joining Halligan Helper's E-List!";
+      $msg += "You will be emailed about updates and sales for Halligan Helper.";
+      $msg += "For now, check out our products page! http://erikahowell.rf.gd/products.php"; 
+      $sent = mail($to, $sub, $msg);
+
+      if( $sent == true ) {
+        echo "Message sent successfully...";
+     }else {
+        echo "Message could not be sent...";
+     }
+    ?>
+
+  </body>
+  
+  <div class=column1>
+          <article class="content"> 
+            <form class="user-input" name="data" method="get" onsubmit="return validate()">
+              <h2>Join Our E-List!</h2>
+              <br />
+              <input type="text" name="fname" placeholder="First Name"/>
+            
+              <br />
+              <input type="text" name="lname" placeholder="Last Name"/>
+            
+              <br />
+              <input type="text" name="number" placeholder="Number"/> 
+              
+              <br />
+              <input type="text" name="email" placeholder="Email"/> <br />
+              
+              <br />
+              <input type="submit" value="Submit" class="submit-btn"/>
+
+           </article>
+  </div>
+
+  <div class="column2">
+  <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJP-zOkNx244kRjoFWmsdMII0&key=AIzaSyDLYuWRR_Wdu9721xVnohwZktYXovHJTto"></iframe>
+  </div>
+
+  
+  <hr />
+      <footer>
+        Company © Halligan Helper. All rights reserved.
+    </footer>
+</html>
